@@ -3,7 +3,12 @@ from .models import *
 
 # Register your models here.
 
-admin.site.register(Category)
-admin.site.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    search_fields = ['name', 'price']
+class CategoryAdmin(admin.ModelAdmin):
+    search_fields = ['slug', 'name']
+
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(Product, ProductAdmin)
 admin.site.register(Stock)
 

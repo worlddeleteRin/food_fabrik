@@ -15,6 +15,7 @@ class OrderAdmin(admin.ModelAdmin):
   change_form_template = 'admin/change_form.html'
   inlines = [ItemInline]
   fieldsets = (
+      ('Покупатель', {'fields': ['user']}),
       ('Детали заказа', {'fields': 
       [
         ('name' , 'phone', 'address',), 
@@ -26,14 +27,18 @@ class OrderAdmin(admin.ModelAdmin):
         'bonus_used', 
         'amount', 
       ]}),
-      ('Покупатель', {'fields': ['user']}),
   )
+  autocomplete_fields = ['user',]
 
   list_display = ['user_info', 'created_at', 'status', 'amount']
 
   def user_info(self, obj):
         current_user = obj.user
-        return current_user.name + ', ' + current_user.phone
+        if (current_user):
+          return current_user.name + ', ' + current_user.phone
+        else:
+          return 'Не авторизованный пользователь'
+
 
   def get_form(self, request, obj=None, change=False, **kwargs):
         form = super().get_form(request, obj, change, **kwargs)
@@ -54,9 +59,15 @@ class OrderAdmin(admin.ModelAdmin):
 
   def response_change(self, request, obj):
         if "_count_amount" in request.POST:
-            print('fuck it')
             # obj.save()
             obj.amount = obj.calc_amount()
+            if obj.user:
+              if obj.user_append_bonus:
+                obj.bonus_gained = calc_bonus_gained(obj.user, obj.amount)
+              else:
+                obj.bonus_gained = 0  
+            else:
+              obj.bonus_gained = 0
             obj.save()
             # matching_names_except_this = self.get_queryset(request).filter(name=obj.name).exclude(pk=obj.id)
             # matching_names_except_this.delete()
@@ -71,8 +82,8 @@ class OrderAdmin(admin.ModelAdmin):
 admin.site.register(Order, OrderAdmin)
 # admin.site.register(ViewedProduct)
 # admin.site.register(Promocode)
-admin.site.register(Cart)
+# admin.site.register(Cart)
 admin.site.register(Coupon)
-admin.site.register(Item)
+# admin.site.register(Item)
 
 

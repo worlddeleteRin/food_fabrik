@@ -10,6 +10,9 @@ class Category(models.Model):
     display_priority = models.IntegerField(default = 0,)
     def __str__(self):
         return self.name 
+    class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
 
 # class Destination(models.Model):
 #     name = models.CharField(default = '', max_length = 300)
@@ -33,6 +36,11 @@ class Product(models.Model):
     # imgsrc = models.ImageField(upload_to='static/images', blank = True, null = True)
     imgsrc = models.ImageField(upload_to="static/images/products", default = '')
     display_priority = models.IntegerField(default = 0)
+
+    class Meta:
+        verbose_name = 'Товар'
+        verbose_name_plural = 'Товары'
+
     def __str__(self):
         return self.name + ' ' + str(self.get_price()) + ' ₽'
 
@@ -76,6 +84,9 @@ class Stock(models.Model):
     description = models.CharField(default = '', max_length = 2000)
     imgsrc = models.ImageField(upload_to="static/images/products")
     display_priority = models.IntegerField(default = 0,)
+    class Meta:
+        verbose_name = 'Акция'
+        verbose_name_plural = 'Акции'
 
     def __str__(self):
         return self.name

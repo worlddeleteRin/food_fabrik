@@ -33,6 +33,10 @@ class Coupon(models.Model):
     active = models.BooleanField()
     users = models.ManyToManyField(User,
     null = True, blank = True)
+    class Meta:
+        verbose_name = 'Купон'
+        verbose_name_plural = 'Купоны'
+
     def __str__(self):
         return self.code
     def get_products_list(self):
@@ -202,8 +206,10 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add = True) 
     amount = models.IntegerField(default = 0,
     blank = True, null = True)
-    name = models.CharField(max_length = 200, default = '')
-    phone = models.CharField(max_length = 50, default = '')
+    name = models.CharField(max_length = 200, default = '',
+    null = True, blank = True)
+    phone = models.CharField(max_length = 50, default = '',
+    null = True, blank = True)
     # email = models.CharField(max_length = 200, default = '')
     delivery = models.CharField(max_length = 200, 
         choices = ORDER_DELIVERY_METHODS,
@@ -231,7 +237,10 @@ class Order(models.Model):
         verbose_name_plural = 'Заказы'
 
     def __str__(self):
-        return self.name + ' ' + self.phone
+        try:
+            return self.name + ' ' + str(self.phone)
+        except:
+            return str(self.id)
 
     def save(self, *args, **kwargs):
         print('trigger order save!')

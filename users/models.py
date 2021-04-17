@@ -19,9 +19,15 @@ class User(models.Model):
     name = models.CharField(default = None, max_length = 100)
     bonus = models.IntegerField(default = 0, 
     null = True, blank = True)
+    class Meta:
+        verbose_name = 'Клиент'
+        verbose_name_plural = 'Клиенты'
 
     def __str__(self):
-        return self.phone
+        try:
+            return str(self.phone) + ', ' + str(self.name) + ', ' + str(self.bonus)
+        except:
+            return self.phone
     def check_password_correct(self, password):
         if self.password == password:
             return True

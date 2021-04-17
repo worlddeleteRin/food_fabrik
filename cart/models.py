@@ -215,7 +215,8 @@ class Order(models.Model):
         choices = ORDER_DELIVERY_METHODS,
         default = 'courier'
     )
-    address = models.CharField(max_length = 1000, default = '')
+    address = models.CharField(max_length = 1000, default = '',
+    null = True, blank = True)
     payment = models.CharField(max_length = 200,
         choices = ORDER_PAYMENT_METHODS,
         default = 'cash')

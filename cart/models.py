@@ -206,9 +206,9 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add = True) 
     amount = models.IntegerField(default = 0,
     blank = True, null = True)
-    name = models.CharField(max_length = 200, default = '',
+    name = models.CharField(max_length = 200, default = '-',
     null = True, blank = True)
-    phone = models.CharField(max_length = 50, default = '',
+    phone = models.CharField(max_length = 50, default = '-',
     null = True, blank = True)
     # email = models.CharField(max_length = 200, default = '')
     delivery = models.CharField(max_length = 200, 

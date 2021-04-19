@@ -1,8 +1,8 @@
 # custom variables
 DELIVERY_BYCLIENT_DISCOUNT = 10
-# DELIVERY_BYCLIENT_ADDRESS = 'г. Алупка, Западная 22-а, павильон на рынке около магазина «Соседи»'
+DELIVERY_BYCLIENT_ADDRESS = 'г. Алупка, Западная 22-а, павильон на рынке около магазина «Соседи»'
 # DELIVERY_BYCLIENT_ADDRESS = 'г. Москва, Яузский бульвар, 9/6с5'
-DELIVERY_BYCLIENT_ADDRESS = '-'
+# DELIVERY_BYCLIENT_ADDRESS = '-'
 # DELIVERY_MAIN_INFO = 'Доставка по г. Москва - бесплатно'
 DELIVERY_MAIN_INFO = '-'
 # DELIVERY_PHONE = '79781161415'

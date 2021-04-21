@@ -31,12 +31,12 @@
             Адрес доставки
             </span>
         </div>
-        <div class="check__block"
+        <!-- <div class="check__block"
         value="#map_delivery_block">
             <span>
             Зона доставки
             </span>
-        </div>
+        </div> -->
     </div>
 
     {% include './space20.html' %}
@@ -54,7 +54,7 @@
     </div>
     </div>   
 
-<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
+<script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
 <script>
 
     ymaps.ready(init);
@@ -63,7 +63,7 @@
         function init () {
             var myMap = new ymaps.Map("map", {
                 // Координаты центра карты
-                center: [44.40841721918498,33.88673639591143],
+                center: [44.411926,34.031531],
                 // Масштаб карты
                 zoom: 17,
                 // Выключаем все управление картой
@@ -73,14 +73,14 @@
             var myGeoObjects = [];
             
             // Указываем координаты метки
-            myGeoObjects = new ymaps.Placemark([44.40841721918498,33.88673639591143],{
-                            balloonContentBody: 'БЦ \'Минская Плаза\'',
+            myGeoObjects = new ymaps.Placemark([44.411926,34.031531],{
+                            balloonContentBody: '',
                             },{
                             iconLayout: 'default#image',
                             // Путь до нашей картинки
-                            iconImageHref: "{% static 'images/logo1.png' %}", 
+                            iconImageHref: "{% static 'images/main_logo2.jpg' %}", 
                             // Размеры иконки
-                            iconImageSize: [90, 70],
+                            iconImageSize: [40, 40],
                             // Смещение верхнего угла относительно основания иконки
                             iconImageOffset: [-35, -35]
             });

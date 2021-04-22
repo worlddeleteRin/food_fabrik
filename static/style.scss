@@ -22,7 +22,16 @@
 @import './css/stock_item.scss';
 @import './css/added_dialog.scss';
 
-
+.flex {
+    display: flex;
+}
+.flex.center {
+    align-items: center;
+    justify-content: center;
+}
+.download_app_icon {
+    width: 200px;
+}
 .mgb10 {
     margin-bottom: 10;
 }

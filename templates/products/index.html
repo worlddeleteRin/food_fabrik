@@ -1,4 +1,5 @@
 {% extends './base.html' %}
+{% load products_extras %}	
 
 {% block content %}
 
@@ -64,7 +65,9 @@
 
    <div class="products__list__wrapper">
 
-      {% for product in category.product_set.all  %}
+      {%  sort_products_by_dp category.product_set.all as sorted_products %}
+
+      {% for product in sorted_products  %}
          {% include './blocks/product_single.html' %}
       {% endfor %}
 

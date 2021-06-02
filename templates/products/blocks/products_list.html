@@ -1,6 +1,8 @@
+{% load all_tags %}
 <div class="products__list__wrapper">
-
-    {% for product in products  %}
+	
+	{% sort_products_by_dp products as sorted_products %}
+    {% for product in sorted_products  %}
         {% include './product_single.html' %}
     {% endfor %}
 

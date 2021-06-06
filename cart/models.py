@@ -199,6 +199,10 @@ class Order(models.Model):
         ('cart','Картой курьеру'),
         ('cash','Наличными'),
     ]
+    order_source_choices = [
+		('site', 'Заказ с сайта'),
+		('mobile', 'Заказ с приложения'),
+    ]
 
 
     user = models.ForeignKey(User, on_delete = models.SET_NULL,
@@ -233,6 +237,10 @@ class Order(models.Model):
     )
     delivery_discount_use = models.BooleanField(default = False)
     user_append_bonus = models.BooleanField(default = True)
+
+    # order source choices field
+    order_source = models.CharField(default = None, max_length = 300,
+    choices = order_source_choices, null = True, blank = True)
     class Meta:
         verbose_name = 'Заказ'
         verbose_name_plural = 'Заказы'

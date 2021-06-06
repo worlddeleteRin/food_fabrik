@@ -300,6 +300,7 @@ def create_order_ajax(request):
         amount = purchase_amount,
         coupon = coupon,
         delivery_discount_use = delivery_discount_use,
+		order_source = 'site'
     )
     new_order.save()
     cart.coupon = None

@@ -36,14 +36,9 @@ class OrderAdmin(admin.ModelAdmin):
   def user_info(self, obj):
         current_user = obj.user
         if (current_user):
-          source = ''
-          if obj.order_source:
-            source += obj.get_order_source_display() + ', '
-          return source + current_user.name + ', ' + current_user.phone
+          return current_user.name + ', ' + current_user.phone
         else:
-          result = ''
-          if obj.order_source:
-            result += obj.get_order_source_display() + ', '
+		  result = ''
           return result + 'Не авторизованный пользователь'
 
 

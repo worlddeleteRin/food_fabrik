@@ -398,6 +398,7 @@ def create_order_not_auth(request):
             address = order_address,
             payment = payment_method_display,
             delivery_discount_use = delivery_discount_use,
+			order_source = 'mobile'
         )
         new_order.save()
         for item in cart_items:
@@ -470,6 +471,7 @@ def create_order_auth(request):
             bonus_gained = bonus_gained,
             coupon = promo_used,
             delivery_discount_use = delivery_discount_use,
+			order_source = 'mobile'
         )
         new_order.save()
         for item in cart_items:

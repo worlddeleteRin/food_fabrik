@@ -40,7 +40,8 @@ def get_address_by_id(address_id):
 
 @register.simple_tag
 def sort_products_by_dp(products):
-	return products.order_by('display_priority')
+    products = products.order_by('price', 'display_priority')
+    return products
 
 
 

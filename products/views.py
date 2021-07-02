@@ -33,7 +33,7 @@ def index(request):
     session_key = get_session_key(request)
     categories = Category.objects.all().order_by('display_priority')
     # destinations = Destination.objects.all()
-    products = Product.objects.all()
+    products = Product.objects.all().order_by('price').order_by('display_priority')
     sale_products = Product.objects.filter(
         sale_price__gte = 1
     )

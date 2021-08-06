@@ -60,7 +60,7 @@ def api_get_allproducts(request):
     if not authorized:
         return return_401()
     else:
-        products = Product.objects.all().order_by('price', 'display_priority')
+        products = Product.objects.all().order_by('display_priority', 'price')
         products = list(products.values())
         status = 'success'
         return JsonResponse({
